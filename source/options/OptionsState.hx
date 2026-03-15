@@ -29,7 +29,7 @@ using StringTools;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay', 'Chart Editor'];
+	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals', 'Gameplay'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
@@ -42,14 +42,12 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.ControlsSubState());
 			case 'Graphics':
 				openSubState(new options.GraphicsSettingsSubState());
-			case 'Visuals and UI':
+			case 'Visuals':
 				openSubState(new options.VisualsUISubState());
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
-			case 'Chart Editor':
-				openSubState(new options.ChartEditorSettingsSubState());
 		}
 	}
 
@@ -80,9 +78,9 @@ class OptionsState extends MusicBeatState
 			grpOptions.add(optionText);
 		}
 
-		selectorLeft = new Alphabet(0, 0, '>', true, false);
+		selectorLeft = new Alphabet(0, 0, '>>', true, false);
 		add(selectorLeft);
-		selectorRight = new Alphabet(0, 0, '<', true, false);
+		selectorRight = new Alphabet(0, 0, '<<', true, false);
 		add(selectorRight);
 
 		changeSelection();
